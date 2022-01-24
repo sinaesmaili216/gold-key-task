@@ -1,0 +1,17 @@
+.card {
+  border-radius: 15px;
+}
+
+.card-img-top {
+    border-radius: 15px;
+}
+
+.update-cart {
+  height: 50px;
+  font-size: 18px;
+  font-weight: 700;
+  color: red;
+  border: none;
+  border-radius: 8px;
+
+}
