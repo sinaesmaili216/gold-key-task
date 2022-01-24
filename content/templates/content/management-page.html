@@ -41,9 +41,17 @@
                             </div>
                         </div>
                     </div>
-
             {% endfor %}
         </div>
     </div>
+
+<h2>Users Activity</h2>
+{% for log in logs %}
+    <table>
+        <tr>
+            <th>{{ log.description }}</th>
+        </tr>
+    </table>
+{% endfor %}
 </body>
 </html>

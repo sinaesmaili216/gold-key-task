@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
+
+from LoggingActivity.models import LogUserActivity
 from content.models import Content
 
 
@@ -15,7 +17,8 @@ class ContentDetailView(DetailView):
 
 def management_page(request):
     contents = Content.objects.all()
-    return render(request, 'content/management-page.html', {'contents': contents})
+    logs = LogUserActivity.objects.all()
+    return render(request, 'content/management-page.html', {'contents': contents, 'logs': logs})
 
 
 def delete_content(request, pk):
