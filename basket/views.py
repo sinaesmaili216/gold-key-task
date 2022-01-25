@@ -30,7 +30,6 @@ def basket(request):
 def add_to_basket(request):
     data = json.loads(request.body)
     contentId = data['contentId']
-    action = data['action']
 
     # print(action, productId)
     customer = Customer.objects.get(user=request.user)
