@@ -28,13 +28,11 @@ class Order(models.Model):
     def total_price(self):
         items = OrderItem.objects.filter(order__customer=self.customer)
         prices = [item.content.price for item in items if isinstance(item.content.price, int)]
-        credit_charge = CreditCharge.objects.get(customer=self.customer).price
-        return sum(prices) - credit_charge
-    #
-    # def total_item_count(self):
-    #     items = OrderItem.objects.filter(order__customer=self.customer)
-    #     counts = [item.quantity for item in items]
-    #     return sum(counts)
+        try:
+            credit_charge = CreditCharge.objects.get(customer=self.customer).price
+            return sum(prices) - credit_charge
+        except CreditCharge.DoesNotExist:
+            return sum(prices)
 
 
 class OrderItem(models.Model):

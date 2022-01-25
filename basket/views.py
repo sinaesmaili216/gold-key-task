@@ -18,7 +18,7 @@ def basket(request):
     except Order.DoesNotExist:
         order = None
     finally:
-        # get user's credit charge if available to apply discount
+        # get user's credit charge if available to show in basket page and apply discount
         try:
             credit_charge = CreditCharge.objects.get(customer__user=request.user)
         except CreditCharge.DoesNotExist:
